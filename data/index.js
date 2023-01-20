@@ -12,6 +12,17 @@ const User_schema = new mongoose.Schema({
 
 })
 
+
+
+const Room_schema = new mongoose.Schema({
+    hotel:String,
+    title: String ,
+    price: Number ,
+    maxPeople: Number ,
+    desc: String ,
+    roomNumbers: [String],
+    date_fill :[ {room: String , date:[Date] } ] ,
+});
 const Hotel_schema = new mongoose.Schema({
     name: String ,
     type: String ,
@@ -21,27 +32,20 @@ const Hotel_schema = new mongoose.Schema({
     photos: [String] ,
     desc: String ,
     rating: Number,
-    rooms: [String]
+    rooms: [String],
 });
 
-
-const Room_schema = new mongoose.Schema({
-    title: String ,
-    price: Number ,
-    maxPeople: Number ,
-    desc: String ,
-    roomNumbers: [String]
-});
 const Transaction_Schema = new mongoose.Schema({
     user_id:String,
     user: [String,String,String,String] ,
     hotel: Hotel_schema ,
-    room: Room_schema ,
+    room: [{price:Number , room_list:[String]}],
     dateStart: Date ,
     dateEnd: Date ,
     price: Number ,
     Payment: String ,
-    status: Number
+    status: String,
+    roomNumbers :[String]
 });
 
 module.exports = {Hotel_schema: mongoose.model('hotels',Hotel_schema) ,
