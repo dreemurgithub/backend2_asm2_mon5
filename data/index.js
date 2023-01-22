@@ -22,17 +22,22 @@ const Room_schema = new mongoose.Schema({
     desc: String ,
     roomNumbers: [String],
     date_fill :[ {room: String , date:[Date] } ] ,
+    createdAt: Date,
+    updatedAt: Date
 });
 const Hotel_schema = new mongoose.Schema({
     name: String ,
     type: String ,
     city: String ,
+    title:String ,
     address: String ,
     distance: String ,
     photos: [String] ,
     desc: String ,
     rating: Number,
     rooms: [String],
+    cheapestPrice: Number,
+    feature: Boolean
 });
 
 const Transaction_Schema = new mongoose.Schema({
@@ -45,7 +50,8 @@ const Transaction_Schema = new mongoose.Schema({
     price: Number ,
     Payment: String ,
     status: String,
-    roomNumbers :[String]
+    roomNumbers :[String],
+    createAt : Date
 });
 
 module.exports = {Hotel_schema: mongoose.model('hotels',Hotel_schema) ,

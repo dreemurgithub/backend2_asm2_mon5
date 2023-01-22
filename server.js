@@ -31,7 +31,7 @@ store.on('error', function(error) {
 app.use(require('express-session')({
     secret: 'This is a secret',
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+        maxAge: 1000 * 60 * 60 * 24  // 1 day
     },
     store: store, resave: false, saveUninitialized: false
 }));

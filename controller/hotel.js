@@ -56,6 +56,9 @@ hotel_route.post('/search', async (req, res) => {
 
     if (req.body.people.kid==='')req.body.people.kid=0
     if (req.body.people.adult==='')req.body.people.adult=0
+    if (req.body.people.min==='')req.body.people.min=0
+    if (req.body.people.max==='')req.body.people.max=0
+
     req.body.people.kid = parseInt(req.body.people.kid)
     req.body.people.adult = parseInt(req.body.people.adult)
 
@@ -66,7 +69,7 @@ hotel_route.post('/search', async (req, res) => {
     const list_time = date_loop(time_arr[1], time_arr[0])
     const list_time_num = list_time.map(el=>el.getTime())
 
-    const arr = await Hotel_schema.find()
+    const arr = await Hotel_schema.find({city: req.body.people.city})
     const arr_obj = arr.map(el=>el.toObject())
     const hotel_list = arr_obj.map(el=>el._id)
     const room = await Room_schema.find({hotel:{$in :hotel_list }})

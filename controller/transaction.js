@@ -20,17 +20,21 @@ transcation_route.post('/booking', async (req, res) => {
 
 
         arr.forEach(el => {
-            total += req.body.all_room[el].price * req.body.all_room[el].room_list.length
-            req.body.all_room[el].room_list.forEach(li => room_booked.push(li.room))
-            // delete null object?
-            if (req.body.all_room[el].room_list.length === 0) delete req.body.all_room[el]
+            if (req.body.all_room[el].room_list.length === 0 || req.body.all_room[el] === undefined)
+                delete req.body.all_room[el];
+            if (req.body.all_room[el] !== undefined && req.body.all_room[el].room_list.length !== 0) {
+                total += req.body.all_room[el].price * req.body.all_room[el].room_list.length
+                req.body.all_room[el].room_list.forEach(li => room_booked.push(li.room))
+            }
+            // delete null object? - delete room ko được đặt
+            //TODO delete/ except all record that is undefined
 
         })
         const roomNumbers = []
         arr.forEach(el => {
             console.log(req.body.all_room[el])
-            if (req.body.all_room[el] !== undefined)
-                req.body.all_room[el].room_list.forEach(room_n => roomNumbers.push(room_n.room) )
+            if (req.body.all_room[el] !== undefined) // room có được đặt(ko undefined) thì đẩy vào list
+                req.body.all_room[el].room_list.forEach(room_n => roomNumbers.push(room_n.room))
         })
         console.log(room_booked, ' room booked')
         const room = [] // array cho price và danh sách phòng đk
@@ -52,7 +56,8 @@ transcation_route.post('/booking', async (req, res) => {
             status: 'Booked',
             price: total * ((date_end - date_start) / (1000 * 60 * 60 * 24) + 1),
             room: room,
-            roomNumbers: roomNumbers
+            roomNumbers: roomNumbers,
+            createAt: new Date()
             // date_fill: date_loop(req.body.dateEnd, req.body.dateStart)
         })
         transac_room = [];
