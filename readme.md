@@ -46,7 +46,7 @@ và ta sẽ có số trang theo thứ tự từ 0
 ## /... mọi thứ còn lại cho User
 
 
-Với origin ở đây là  ['https://hotel-asm.web.app','https://admin-hotel-asm2.web.app'] trên deploy và  ['http://localhost:3000','http://localhost:3001'] của dev enviroment
+Với origin ở đây là  ['https://hotel-asm.web.app', 'https://admin-hotel-asm2.web.app'] trên deploy và  ['http://localhost:3000','http://localhost:3001'] của dev enviroment
 ## /user route cho user
 ### Danh sách Hotel và từng Hotel
 Danh sách Hotel trên homepage bị giới hạn là 3 Hotel có rating cao nhất, từ /hotel_list . và /hotel_list/:id với useLocation() của react sẽ lấy id trên URL frontend và thực hiện get request để return chi tiết hotel qua ID.
