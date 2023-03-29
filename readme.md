@@ -5,7 +5,7 @@ URI của mongodb, production="false"/"true" (string, không phải boolean)
 ### Dev enviroment
 production="false"/"true" sẽ quyết định biến origin để cookie gửi qua http hay https, do Chrome và các Web browser hiện đại yêu cầu Session cookie gưi qua https khác với HTTP nên product="false" sẽ edit origin và cookie cho http(http có secure: 'auto' và sameSite:'lax') và production="true" sẽ edit cookie cho https(secure:true và sameSite:'none').
 ### process.env.production
-production="true", và khi đó origin sẽ là ['https://asm3-mon5.web.app,https://admin-hotel-asm2.web.app'], nếu production="false" origin sẽ là ['http://localhost:3000,http://localhost:3001'] (bao gồm server của Client và Admin). Ngoài ra Admin và Client cần phải bật ở 2 User khác nhau của Chrome, do session đến cùng từ 1 server
+production="true", và khi đó origin sẽ là ['https://asm3-mon5.web.app','https://admin-hotel-asm2.web.app'], nếu production="false" origin sẽ là ['http://localhost:3000,http://localhost:3001'] (bao gồm server của Client và Admin). Ngoài ra Admin và Client cần phải bật ở 2 User khác nhau của Chrome, do session đến cùng từ 1 server
 
 ### Deploy
 Sử dụng replit với coldstart, nên load sản phẩm trên Client lúc đầu sẽ mất tầm 30s, ENV lưu trên replit có production="true". Server tại
