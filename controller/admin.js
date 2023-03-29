@@ -148,9 +148,10 @@ Admin_Route.delete('/admin/rooms/:id/:hotel', async (req, res) => {
 Admin_Route.get('/admin/tran/:page', async (req, res) => {
     const page = parseInt(req.params.page)
     const array = await Transaction_Schema.find().sort({createAt: -1})
-    const arr_obj = array.map(el=>el.toObject())
-    const edit = arr_obj.slice((5*page), 5*(page+1))
-    res.send(edit)
+        .skip(page*5).limit(5)
+    // const arr_obj = array.map(el=>el.toObject())
+    // const edit = arr_obj.slice((5*page), 5*(page+1))
+    res.send(array)
     let aaa=0
 })
 

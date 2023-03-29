@@ -1,5 +1,6 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
-const uri = 'mongodb://127.0.0.1:27017/Hotel'
+const uri = `${process.env.database}/Hotel`
 mongoose.connect(uri);
 
 const User_schema = new mongoose.Schema({
