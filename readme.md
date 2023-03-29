@@ -129,7 +129,8 @@ const Admin_route = require('./admin');controller.use(Admin_route)
 ```
 
 
-### Deploy server
+## Deploy và cors
+### Server
 https://Hotelbackendasm2.ducminh27.repl.co (chỉ có thể access qua fetch request từ https://hotel-asm.web.app và https://admin-hotel-asm2.web.app ) qua middleware
 ```
 app.use((req, res, next) => {
@@ -142,3 +143,5 @@ app.use((req, res, next) => {
 });
 ```
 Với origin ở đây là  ['https://hotel-asm.web.app','https://admin-hotel-asm2.web.app'] trên deploy và  ['http://localhost:3000','http://localhost:3001'] của dev enviroment
+### Admin và Client
+User Client https://github.com/dreemurgithub/Frontend-asm2-mon5 và Admin Client https://github.com/dreemurgithub/front-end-admin
